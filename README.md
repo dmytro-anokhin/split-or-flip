@@ -4,7 +4,7 @@
 
 ## Adaptivity
 
-UIKit went a long way to support various devices and screen sizes in one app. Starting from universal apps for iPhone and iPad, introducing Auto Layout, multiple iterations on rotation API, and up to adaptive apps. Today number of devices multiplied by orientation impress:
+UIKit went a long way to support various devices and screen sizes in one app. Starting from universal apps for iPhone and iPad, introducing Auto Layout, multiple iterations on rotation API, and up to adaptive apps. Today's number of devices:
 
 ![Devices and Orientations](images/DevicesAndOrientations.png)
 
@@ -61,7 +61,7 @@ enum DisplayMode {
 private(set) var displayMode: DisplayMode = .sideBySide
 ```
 
-Display mode must change when screen size changes. I need to know is if screen is large enough for side-by-side presentation. Absolute size in points is not important. I use horizontal size class to decide best display mode.
+Display mode must change when screen size changes. I need to know when screen is large enough for side-by-side presentation. Absolute size in points is not important. I use horizontal size class to decide best display mode.
 
 ```swift
 /// Suggests display mode based on trait collection
@@ -192,7 +192,7 @@ This steps described in detail in View Controller Programming Guide for iOS - [I
 
 ### Implementing adaptive view controller
 
-There are couple methods in `UIViewController` that reflect adaptivity.
+There are couple of methods in `UIViewController` that reflect adaptivity.
 
 `UIViewController` receives `viewWillLayoutSubviews` callback when layout of its view is about to change. This is good time to manipulate things.
 
@@ -237,8 +237,8 @@ override func viewWillLayoutSubviews() {
 When overriding `viewWillLayoutSubviews` it is important to be careful not to create a layout cycle.
 
 There are two methods to reflect changes in screen/view size:
-- `viewWillTransition(to:with:` is called when size of the view will change.
-- `willTransition(to:with:)` is called when trait collection will change.
+- `viewWillTransition(to:with:` called when size of the view will change.
+- `willTransition(to:with:)` called when trait collection will change.
 
 Because my display mode changes based on size class, I need to update UI in `willTransition(to:with:)`.
 
