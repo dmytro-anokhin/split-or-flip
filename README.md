@@ -42,7 +42,7 @@ There are common cases when view controllers are equal. For instance, when we wa
 
 ## Designing split view controller
 
-![Split View](images/splitview.png)
+![Split View](images/SplitView.png)
 
 #### Display Mode
 
@@ -252,7 +252,8 @@ override func willTransition(to newCollection: UITraitCollection, with coordinat
                 navigationItem.rightBarButtonItem = nil
                 break
             case .one:
-                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Flip", style: .plain, target: self, action: #selector(flipAction))
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Flip", style: .plain,
+                    target: self, action: #selector(flipAction))
                 break
         }
     }
